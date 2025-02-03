@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <record id="view_product_template_form_inherit_balcao" model="ir.ui.view">
+    <field name="name">product.template.form.balcao</field>
+    <field name="model">product.template</field>
+    <field name="inherit_id" ref="product.product_template_only_form_view"/>
+    <field name="arch" type="xml">
+      <!-- Oculta CFOP -->
+      <xpath expr="//field[@name='cfop_id']" position="attributes">
+        <attribute name="invisible">1</attribute>
+        <attribute name="modifiers">{'invisible': True}</attribute>
+      </xpath>
+      <!-- Oculta CST ICMS -->
+      <xpath expr="//field[@name='icms_cst']" position="attributes">
+        <attribute name="invisible">1</attribute>
+        <attribute name="modifiers">{'invisible': True}</attribute>
+      </xpath>
+      <!-- Oculta NCM -->
+      <xpath expr="//field[@name='ncm_id']" position="attributes">
+        <attribute name="invisible">1</attribute>
+        <attribute name="modifiers">{'invisible': True}</attribute>
+      </xpath>
+    </field>
+  </record>
+</odoo>
