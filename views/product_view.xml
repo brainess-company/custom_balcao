@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-  <record id="view_product_template_form_inherit_balcao" model="ir.ui.view">
+  <data>
+    <record id="view_product_template_form_inherit_balcao" model="ir.ui.view">
       <field name="name">product.template.form.balcao</field>
       <field name="model">sale.order</field>
       <field name="inherit_id" ref="l10n_br_sale.l10n_br_sale_order_form"/>
       <field name="arch" type="xml">
-        <data><!-- Oculta CFOP para o grupo Balcão -->
+        <data>
+          <!-- Oculta CFOP para o grupo Balcão -->
           <xpath expr="//field[@name='cfop_id']" position="attributes">
             <attribute name="attrs">{'invisible': [('user_id.groups_id', 'in', [ref('custom_balcao.group_balcao')])]}</attribute>
           </xpath>
@@ -17,28 +19,8 @@
           <xpath expr="//field[@name='ncm_id']" position="attributes">
             <attribute name="attrs">{'invisible': [('user_id.groups_id', 'in', [ref('custom_balcao.group_balcao')])]}</attribute>
           </xpath>
-        </data></field><?xml version="1.0" encoding="UTF-8"?>
-<odoo>
-  <data>
-    <!-- Ação para ocultar o campo cfop_id para o grupo de usuários balcão -->
-    <record id="view_invoice_form_balcao" model="ir.ui.view">
-      <field name="name">account.move.form.balcao</field>
-      <field name="model">account.move</field>
-      <field name="inherit_id" ref="account.view_move_form"/>
-      <field name="arch" type="xml">
-        <xpath expr="//field[@name='cfop_id']" position="attributes">
-          <attribute name="groups">base.group_balcao</attribute>
-        </xpath>
+        </data>
       </field>
     </record>
-
-    <!-- Definição do grupo 'balcão' -->
-    <record id="group_balcao" model="res.groups">
-      <field name="name">Balcão</field>
-      <field name="category_id" ref="base.module_category_accounting"/>
-    </record>
   </data>
-  </record>
-
 </odoo>
-
