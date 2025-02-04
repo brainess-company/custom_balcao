@@ -3,14 +3,17 @@
     <record id="view_order_line_form_custom_balcao" model="ir.ui.view">
         <field name="name">sale.order.line.form.custom.balcao</field>
         <field name="model">sale.order.line</field>
+        <field name="inherit_id" ref="l10n_br_sale.l10n_br_sale_order_form"/>
         <field name="arch" type="xml">
-            <form>
-                <sheet>
-                    <group>
-                        <field name="cfop_id" groups="custom_balcao.group_balcao"/>
-                    </group>
-                </sheet>
-            </form>
+            <!-- Adiciona o campo fiscal_operation_type à view -->
+            <xpath expr="//field[@name='cfop_id']" position="before">
+                <field name="fiscal_operation_type" invisible="1"/>
+            </xpath>
+
+            <!-- Oculta o campo cfop_id para o grupo custom_balcao.group_balcao -->
+            <xpath expr="//field[@name='cfop_id']" position="attributes">
+                <attribute name="groups">custom_balcao.group_balcao</attribute>
+            </xpath>
         </field>
     </record>
 </odoo>
