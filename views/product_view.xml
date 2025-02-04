@@ -6,7 +6,7 @@
         <field name="inherit_id" ref="sale.view_order_form"/>
         <field name="arch" type="xml">
             <xpath expr="//group[@name='sale_header']" position="inside">
-                <field name="has_permission_balcao" string="Permission for Balcão" widget="boolean" attrs="{'invisible': [('state', 'in', ['sale', 'done'])]}"/>
+                <field name="has_balcao_permission" string="Permission for Balcão" widget="boolean" attrs="{'invisible': [('state', 'in', ['sale', 'done'])]}"/>
             </xpath>
         </field>
     </record>
