@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
+        <record id="view_order_form_add_has_balcao_permission" model="ir.ui.view">
+        <field name="name">sale.order.form.add.has.balcao.permission</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <data>
+                <group name="fiscal_fields"> <!-- Escolha um grupo existente -->
+                    <field name="has_balcao_permission" invisible="1"/>
+                </group>
+            </data>
+        </field>
+    </record>
     <record id="view_order_form_custom_balcao" model="ir.ui.view">
         <field name="name">sale.order.form.custom.balcao</field>
         <field name="model">sale.order</field>
