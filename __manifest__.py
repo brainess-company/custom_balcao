@@ -3,7 +3,7 @@
     'version': '1.0',
     'category': 'Custom',
     'summary': 'Permissões específicas para ocultar campos fiscais do módulo l10n_br_fiscal.',
-    'depends': ['sale', 'l10n_br_fiscal', 'l10n_br_sale', 'account'],
+    'depends': ['sale', 'l10n_br_sale', 'l10n_br_fiscal', 'account'],
     'data': [
         'security/security.xml',
         'security/ir.model.access.csv',
