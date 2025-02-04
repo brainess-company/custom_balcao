@@ -5,10 +5,7 @@
         <field name="model">sale.order</field>
         <field name="inherit_id" ref="l10n_br_sale.l10n_br_sale_order_form"/>
         <field name="arch" type="xml">
-            <!-- Declara o campo user_has_groups para ser acessado -->
-            <field name="user_has_groups" invisible="1"/>
-
-            <!-- Modifica o campo cfop_id para ocultar para o grupo custom_balcao.group_balcao -->
+            <!-- Declara o campo com referência ao usuário -->
             <xpath expr="//field[@name='cfop_id']" position="attributes">
                 <attribute name="attrs">
                     {
@@ -17,12 +14,11 @@
                             ('tax_icms_or_issqn', '=', 'issqn'),
                             '|',
                             ('parent.fiscal_operation_id', '=', False),
-                            ('user_has_groups', '=', 'custom_balcao.group_balcao')
+                            ('user.has_balcao_permission', '=', True)
                         ]
                     }
                 </attribute>
             </xpath>
         </field>
     </record>
-
 </odoo>
