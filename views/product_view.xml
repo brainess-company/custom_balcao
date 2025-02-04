@@ -5,8 +5,8 @@
         <field name="model">sale.order</field>
         <field name="inherit_id" ref="sale.view_order_form"/>
         <field name="arch" type="xml">
-            <xpath expr="//sheet/group" position="inside">
-                <field name="has_balcao_permission" invisible="1"/>
+            <xpath expr="//group[@name='sale_header']" position="inside">
+                <field name="has_permission_balcao" string="Permission for Balcão" widget="boolean" attrs="{'invisible': [('state', 'in', ['sale', 'done'])]}"/>
             </xpath>
         </field>
     </record>
