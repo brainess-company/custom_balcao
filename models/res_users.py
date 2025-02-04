@@ -1,13 +1,15 @@
 from odoo import models, fields, api
 
-class SaleOrder(models.Model):
-    _inherit = 'sale.order'
+class ResUsers(models.Model):
+    _inherit = 'res.users'
 
-    has_balcao_permission = fields.Boolean(compute='_compute_has_balcao_permission')
+    has_balcao_permission = fields.Boolean(
+        compute='_compute_has_balcao_permission',
+        string="Permissão Balcão"
+    )
 
-    @api.depends_context('uid')
+    @api.depends('groups_id')
     def _compute_has_balcao_permission(self):
-        for order in self:
-            user = self.env.user
-            # Defina a lógica correta para verificar a permissão
-            order.has_balcao_permission = user.has_group('custom_balcao.group_balcao_user')
+        balcão_group = self.env.ref('custom_balcao.group_balcao', raise_if_not_found=False)
+        for user in self:
+            user.has_balcao_permission = balcão_group in user.groups_id if balcão_group else False
