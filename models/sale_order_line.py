@@ -9,8 +9,8 @@ class SaleOrderLine(models.Model):
         store=True
     )
 
-    @api.depends('user_id.has_balcao_permission')
+    @api.depends('order_id.user_id.has_balcao_permission')
     def _compute_has_balcao_permission(self):
-        for order in self:
-            # Recupera a permissão do usuário atual vinculado ao pedido
-            order.has_balcao_permission = order.user_id.has_balcao_permission if order.user_id else False
+        for order_line in self:
+            # Acessa o campo 'user_id' a partir de 'order_id' e calcula 'has_balcao_permission'
+            order_line.has_balcao_permission = order_line.order_id.user_id.has_balcao_permission if order_line.order_id.user_id else False
