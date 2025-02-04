@@ -13,12 +13,11 @@
                             ('tax_icms_or_issqn', '=', 'issqn'),
                             '|',
                             ('parent.fiscal_operation_id', '=', False),
-                            ('context.get("has_balcao_permission")', '=', True)
+                            ('has_balcao_permission', '=', True)
                         ]
                     }
                 </attribute>
             </xpath>
         </field>
     </record>
-
 </odoo>
