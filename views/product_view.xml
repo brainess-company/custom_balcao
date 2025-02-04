@@ -1,26 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-  <data>
-    <record id="view_product_template_form_inherit_balcao" model="ir.ui.view">
-      <field name="name">product.template.form.balcao</field>
-      <field name="model">sale.order</field>
-      <field name="inherit_id" ref="l10n_br_sale.l10n_br_sale_order_form"/>
-      <field name="arch" type="xml">
-        <data>
-          <!-- Oculta CFOP para o grupo Balcão -->
-          <xpath expr="//field[@name='cfop_id']" position="attributes">
-            <attribute name="attrs">{'invisible': [('user_id.groups_id', 'in', [ref('custom_balcao.group_balcao')])]}</attribute>
-          </xpath>
-          <!-- Oculta CST ICMS -->
-          <xpath expr="//field[@name='icms_cst']" position="attributes">
-            <attribute name="attrs">{'invisible': [('user_id.groups_id', 'in', [ref('custom_balcao.group_balcao')])]}</attribute>
-          </xpath>
-          <!-- Oculta NCM -->
-          <xpath expr="//field[@name='ncm_id']" position="attributes">
-            <attribute name="attrs">{'invisible': [('user_id.groups_id', 'in', [ref('custom_balcao.group_balcao')])]}</attribute>
-          </xpath>
-        </data>
-      </field>
-    </record>
-  </data>
+  <record id="view_order_form_custom_balcao" model="ir.ui.view">
+    <field name="name">sale.order.form.custom.balcao</field>
+    <field name="model">sale.order</field>
+    <field name="inherit_id" ref="sale.view_order_form"/>
+    <field name="arch" type="xml">
+        <!-- Localize o campo cfop_id no formulário de vendas -->
+        <xpath expr="//field[@name='cfop_id']" position="attributes">
+            <attribute name="attrs">{'invisible': [('user_has_groups', '=', 'custom_balcao.group_balcao')]}</attribute>
+        </xpath>
+    </field>
+</record>
 </odoo>
