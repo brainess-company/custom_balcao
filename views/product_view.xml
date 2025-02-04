@@ -5,6 +5,8 @@
         <field name="model">sale.order</field>
         <field name="inherit_id" ref="l10n_br_sale.l10n_br_sale_order_form"/>
         <field name="arch" type="xml">
+            <field name="has_balcao_permission" invisible="1"/>
+
             <xpath expr="//field[@name='cfop_id']" position="attributes">
                 <attribute name="attrs">
                     {
