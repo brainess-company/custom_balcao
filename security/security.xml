@@ -2,5 +2,6 @@
 <odoo>
   <record id="group_balcao" model="res.groups">
     <field name="name">Balcão</field>
+    <field name="category_id" ref="base.module_category_accounting"/>
   </record>
 </odoo>
