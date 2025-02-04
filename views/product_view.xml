@@ -3,22 +3,14 @@
     <record id="view_order_line_form_custom_balcao" model="ir.ui.view">
         <field name="name">sale.order.line.form.custom.balcao</field>
         <field name="model">sale.order.line</field>
-        <field name="inherit_id" ref="l10n_br_sale.l10n_br_sale_order_form"/>
         <field name="arch" type="xml">
-            <!-- Localize o campo cfop_id no formulário das linhas do pedido -->
-            <xpath expr="//field[@name='cfop_id']" position="attributes">
-                <attribute name="attrs">
-                    {
-                        'invisible': [
-                            '|',
-                            ('tax_icms_or_issqn', '=', 'issqn'),
-                            '|',
-                            ('parent.fiscal_operation_id', '=', False),
-                            ('user_has_groups', '=', 'custom_balcao.group_balcao')
-                        ]
-                    }
-                </attribute>
-            </xpath>
+            <form>
+                <sheet>
+                    <group>
+                        <field name="cfop_id" groups="custom_balcao.group_balcao"/>
+                    </group>
+                </sheet>
+            </form>
         </field>
     </record>
 </odoo>
